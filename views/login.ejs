@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <title>Roulettes</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <section>
+
+    <h1>Casino Owner Log In</h1>
+
+    <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+    <!-- LOGIN FORM -->
+    <form action="/login" method="post">
+        <div class="">
+            <label>Email</label>
+            <input type="text" class="" name="email">
+        </div>
+        <div class="">
+            <label>Password</label>
+            <input type="password" class="" name="password">
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <hr>
+
+    <p>Need an account? <a href="/signup">Signup</a></p>
+    <p>Or go <a href="/">home</a>.</p>
+
+  </section>
+</body>
+</html>
