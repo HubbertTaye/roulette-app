@@ -19,7 +19,7 @@ module.exports = function(app, passport) { //add db when database.js is complete
 
 //make note of what each route is doing
 
-    // =============================================================================
+// =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================
 // =============================================================================
 
@@ -31,8 +31,9 @@ module.exports = function(app, passport) { //add db when database.js is complete
       });
 
       // process the login form
+      //use a stratagey login authentican
       app.post('/login', passport.authenticate('local-login', {
-          successRedirect : '/colorlog', // redirect to main page
+          successRedirect : '/profile', // redirect to the secure profile section
           failureRedirect : '/login', // redirect back to the signup page if there is an error
           failureFlash : true // allow flash messages
       }));
@@ -45,7 +46,7 @@ module.exports = function(app, passport) { //add db when database.js is complete
 
       // process the signup form
       app.post('/signup', passport.authenticate('local-signup', {
-          successRedirect : '/colorlog', // redirect to main page
+          successRedirect : '/profile', // redirect to the secure profile section
           failureRedirect : '/signup', // redirect back to the signup page if there is an error
           failureFlash : true // allow flash messages
       }));
@@ -67,11 +68,12 @@ module.exports = function(app, passport) { //add db when database.js is complete
       });
   });
 
+};
+
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated())
       return next();
 
   res.redirect('/');
-}
 }
