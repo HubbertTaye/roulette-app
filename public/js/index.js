@@ -1,21 +1,21 @@
+//declaring a variable for the roulette choice
+let houseChoice;
 
 function startGame(){
-  let userChoice = document.querySelector('.color').value
-  console.log(userChoice)
+  let userChoice = document.querySelector('.color:checked').value;
+  console.log(userChoice);
 }
 //what happens when the box is clicked
 function pickBox(){
   const numbSelector = Math.random();
 
-  if(numbSelector > 1){
-    clickIt = this.classList.add("black")
-    console.log(numbSelector);
-  }else if(numbSelector < 1){
-    clickIt = this.classList.add("red")
+  if(numbSelector > .5){
+    houseChoice = "black";
+  }else if(numbSelector < .5){
+    houseChoice = "red";
   }
 
-  // let dealer = numbs[numbSelector]
 
-}
+} //pickBox closes
 
-document.querySelector('button').addEventListener('click', startGame)
+document.querySelector('#runUpBitch').addEventListener('click', startGame);
