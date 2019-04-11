@@ -22,7 +22,7 @@ const configDB = require('./config/database.js');
  mongoose.connect(configDB.url, (err, database) => {
   if (err) return console.log(err)
   db = database
-  require('./app/routes.js')(app, passport, db); 
+  require('./app/routes.js')(app, passport, db);
  });
 
 require('./config/passport')(passport);
@@ -31,7 +31,7 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('/public'))
+app.use(express.static(__dirname + '/public'))
 
 app.set('view engine', 'ejs');
 
