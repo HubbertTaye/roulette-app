@@ -22,10 +22,25 @@ checkAndUpdate()
 });
 
 let wheel = document.querySelector('.results')
-//function wheelDisplay
-Math.random (num 0 through 36) display as wheel.textContent
-Math.random for .red and .black class => wheel.classList.add()
-Math.random for .odd and .even class
+function wheelSpin(){
+//  Math.random (num 0 through 36) display as wheel.textContent
+//Math.random for .red and .black class => wheel.classList.add()
+//Math.random for .odd and .even class
+  let num = Math.random()
+  if(num<=.5){
+    wheel.classList.add('red')
+    wheel.classList.add('even')
+  }else{
+    wheel.classList.add('black')
+    wheel.classList.add('odd')
+  }
+  if(wheel.classList.contains('odd')){
+    Math.random only odd numbers
+  }else if(wheel.classList.contains('even')){
+    Math.random
+  }
+
+} //closes wheelSpin function
 
 function checkAndUpdate(){
 
@@ -33,8 +48,5 @@ function checkAndUpdate(){
 if(this.classList.contains('.red') === wheel.classList.contains('.red')||this.classList.contains('.black') === wheel.classList.contains('.black')||this.classList.contains('.even') === wheel.classList.contains('.even')||this.classList.contains('.odd') === wheel.classList.contains('.odd')){
 total = clicks *= 2;
 }
-if(){
 
-}
-
-}
+} //closes checkAndUpdate function
