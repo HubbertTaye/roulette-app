@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+   <meta charset="utf-8">
+   <title>Owner Losses and Wins</title>
+   <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+   <h1>Owner Losses and Wins</h1>
+   <ul class="stats">
+     <% for(var i=0; i<stats.length; i++) {%>
+       <li class="stats">
+         <p><span>Monies:</span><%= stats[i].monies %></p>
+         <p><span>Wins:</span><%= stats[i].wins %></p>
+         <p><span>Losses:</span><%= stats[i].losses %></p>
+       </li>
+     <% } %>
+   </ul>
+   <script src="owner.js" type="text/javascript"></script>
+ </body>
+</html>
