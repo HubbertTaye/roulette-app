@@ -1,21 +1,31 @@
 //declaring a variable for the roulette choice
-let houseChoice;
-
+let userMoney;
+  let results = document.getElementById('result');
 function startGame(){
   let userChoice = document.querySelector('.color:checked').value;
-  console.log(userChoice);
+  let wheelChoice = wheelSpin();
+  compareChoices(userChoice, wheelChoice)
 }
 //what happens when the box is clicked
-function pickBox(){
+function wheelSpin(){
   const numbSelector = Math.random();
 
   if(numbSelector > .5){
-    houseChoice = "black";
+    return "black";
   }else if(numbSelector < .5){
-    houseChoice = "red";
+    return "red";
   }
-
-
 } //pickBox closes
+
+//comparison function
+function compareChoices(userChoice, wheelChoice){
+
+  let userMoney;
+  if(userChoice === wheelChoice){
+    result.textContent = `You won ${userChoice}`
+  }else{
+    ``
+  }
+}
 
 document.querySelector('#runUpBitch').addEventListener('click', startGame);
