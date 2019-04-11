@@ -1,4 +1,4 @@
-module.exports = function(app, passport) { //add db when database.js is completed
+module.exports = function(app, passport, db) {
 
 // render initial page ===============================================================
 
