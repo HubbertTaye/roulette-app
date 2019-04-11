@@ -8,18 +8,23 @@
   //store the money earned in a variable to send back to the API
 //store the wins and losses into variables to send back to the API
 
-let clicks = 0,
+let chips = 0,
 wins = 0,
 losses = 0,
-total = 1000;
+gains = 0,
+loss = 0;
 var boxes = document.querySelectorAll('.box');
 Array.from(boxes).forEach(function(box) {
       box.addEventListener('click', function(){
-clicks+=1
-wheelDisplay()
-checkAndUpdate()
+chips+=1
 })
 });
+document.querySelector('.start').addEventListener('click', startGame)
+
+function startGame(box){
+  wheelSpin()
+  checkAndUpdate(box)
+}
 
 let wheel = document.querySelector('.results')
 function wheelSpin(){
@@ -35,18 +40,18 @@ function wheelSpin(){
     wheel.classList.add('odd')
   }
   if(wheel.classList.contains('odd')){
-    Math.random only odd numbers
+  //  Math.random only odd numbers
   }else if(wheel.classList.contains('even')){
-    Math.random
+  //  Math.random
   }
 
 } //closes wheelSpin function
 
-function checkAndUpdate(){
+function checkAndUpdate(box){
 
-
-if(this.classList.contains('.red') === wheel.classList.contains('.red')||this.classList.contains('.black') === wheel.classList.contains('.black')||this.classList.contains('.even') === wheel.classList.contains('.even')||this.classList.contains('.odd') === wheel.classList.contains('.odd')){
-total = clicks *= 2;
-}
+if(box.classList.contains('.red') === wheel.classList.contains('.red')||box.classList.contains('.black') === wheel.classList.contains('.black')||box.classList.contains('.even') === wheel.classList.contains('.even')||box.classList.contains('.odd') === wheel.classList.contains('.odd')){
+ gains = chips * 2;
+ console.log(gains)
+ }
 
 } //closes checkAndUpdate function
