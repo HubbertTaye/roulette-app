@@ -1,5 +1,4 @@
 //declaring a variable for the roulette choice
-let userMoney;
   let results = document.getElementById('result');
 function startGame(){
   let userChoice = document.querySelector('.color:checked').value;
@@ -20,11 +19,39 @@ function wheelSpin(){
 //comparison function
 function compareChoices(userChoice, wheelChoice){
 
-  let userMoney;
+  let userMoney=50;
   if(userChoice === wheelChoice){
-    result.textContent = `You won ${userChoice}`
+    result.textContent = `You won ${userMoney}`
+    fetch('decrease', {
+      method: 'put',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        'userMoney': userMoney
+      })
+    })
+    .then(response => {
+      if (response.ok) return response.json()
+    })
+    .then(data => {
+      console.log(data)
+      window.location.reload(true)
+    })
   }else{
-    ``
+    result.textContent =  `You lost ${userMoney}`
+    fetch('increase', {
+      method: 'put',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        'userMoney': userMoney
+      })
+    })
+    .then(response => {
+      if (response.ok) return response.json()
+    })
+    .then(data => {
+      console.log(data)
+      window.location.reload(true)
+    })
   }
 }
 
