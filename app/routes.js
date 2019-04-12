@@ -1,4 +1,4 @@
-module.exports = function(app, passport) { //add db when database.js is completed
+module.exports = function(app, passport, db) {
 
 // render initial page ===============================================================
 
@@ -10,6 +10,32 @@ module.exports = function(app, passport) { //add db when database.js is complete
     // =============================================================================
 // GAME API SET UP =============================================================
 // =============================================================================
+app.put('/decrease', (req, res) => {
+  db.collection('stats').findOneAndUpdate({}, {
+    $set: {
+      monies: req.body.monies - req.body.userMoney
+    }
+  }, (err, result) => {
+    if(err) return res.send(err)
+    console.log(monies)
+    res.send(result)
+  })
+
+})
+
+app.put('/increase', (req, res) => {
+  db.collection('stats').findOneAndUpdate({}, {
+    $set: {
+      monies: req.body.monies + req.body.userMoney
+    }
+  }, (err, result) => {
+    if(err) return res.send(err)
+    console.log(monies)
+    res.send(result)
+  })
+
+})
+
 
 //make note of what each route is doing
 
