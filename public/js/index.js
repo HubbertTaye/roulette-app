@@ -34,7 +34,7 @@ function compareChoices(userChoice, wheelChoice){
     })
     .then(data => {
       console.log(data)
-      window.location.reload(true)
+      //window.location.reload(true)
     })
   }else{
     result.textContent =  `You lost ${userMoney}`
@@ -50,7 +50,7 @@ function compareChoices(userChoice, wheelChoice){
     })
     .then(data => {
       console.log(data)
-      window.location.reload(true)
+      //window.location.reload(true)
     })
   }
 }

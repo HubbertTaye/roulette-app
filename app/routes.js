@@ -1,36 +1,43 @@
 module.exports = function(app, passport, db) {
 
-// render initial page ===============================================================
+// render initial page =========================================================
 
     // show the home page (will also have our login links)
     app.get('/', function(req, res) {
         res.render('index.ejs'); //add database render if needed be
     });
-
-    // =============================================================================
+    //show owner page
+    app.get('/owner', function(req, res) {
+      db.collection('stats').find().toArray((err, result) => {
+    if (err) return console.log(err)
+    res.render('owner.ejs', {
+      user : req.user,
+      stats: result
+    })
+  })
+    });
+    // =========================================================================
 // GAME API SET UP =============================================================
 // =============================================================================
 app.put('/decrease', (req, res) => {
-  db.collection('stats').findOneAndUpdate({}, {
-    $set: {
-      monies: req.body.monies - req.body.userMoney
+  db.collection('stats').update({}, {
+    $inc: {
+      monies: -req.body.userMoney
     }
   }, (err, result) => {
     if(err) return res.send(err)
-    console.log(monies)
     res.send(result)
   })
 
 })
 
 app.put('/increase', (req, res) => {
-  db.collection('stats').findOneAndUpdate({}, {
-    $set: {
-      monies: req.body.monies + req.body.userMoney
+  db.collection('stats').update({}, {
+    $inc: {
+      monies: req.body.userMoney
     }
   }, (err, result) => {
     if(err) return res.send(err)
-    console.log(monies)
     res.send(result)
   })
 
@@ -59,7 +66,7 @@ app.put('/increase', (req, res) => {
       // process the login form
       //use a stratagey login authentican
       app.post('/login', passport.authenticate('local-login', {
-          successRedirect : '/profile', // redirect to the secure profile section
+          successRedirect : '/owner', // redirect to the secure profile section
           failureRedirect : '/login', // redirect back to the signup page if there is an error
           failureFlash : true // allow flash messages
       }));
@@ -72,7 +79,7 @@ app.put('/increase', (req, res) => {
 
       // process the signup form
       app.post('/signup', passport.authenticate('local-signup', {
-          successRedirect : '/profile', // redirect to the secure profile section
+          successRedirect : '/owner', // redirect to the secure profile section
           failureRedirect : '/signup', // redirect back to the signup page if there is an error
           failureFlash : true // allow flash messages
       }));
@@ -90,7 +97,7 @@ app.put('/increase', (req, res) => {
       user.local.email    = undefined;
       user.local.password = undefined;
       user.save(function(err) {
-          res.redirect('/profile');
+          res.redirect('/');
       });
   });
 

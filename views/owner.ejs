@@ -2,17 +2,17 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Owner's Money, Wins, and Losses</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Casino House</title>
+    <link rel="stylesheet" href="css/master.css">
   </head>
   <body>
     <h1>Owner Money, Wins, and Losses</h1>
     <ul class="stats">
       <% for(var i=0; i<stats.length; i++) {%>
         <li class="stats">
-          <p><%= stats[i].monies %></p>
-          <p><%= stats[i].wins %></p>
-          <p><%= stats[i].losses %></p>
+          <p><%= `House Total: $${stats[i].monies}` %></p>
+          <p><%= `Total amount of users winning: ${stats[i].wins}` %></p>
+          <p><%= `Total amount of users loses: ${stats[i].losses}` %></p>
         </li>
       <% } %>
     </ul>
