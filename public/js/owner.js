@@ -3,10 +3,10 @@
 //if the current value does not equal the current value then update into the dom
 
  
-Array.from(#).forEach(function(el) {
+Array.from(stats).forEach(function(el) {
       el.addEventListener('click', function(){
         const name = this.parentNode.parentNode.childNodes[1].innerText
-        fetch('#', {
+        fetch('stats', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
