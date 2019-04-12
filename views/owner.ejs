@@ -2,15 +2,15 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Owner Losses and Wins</title>
+    <title>Owner's Money, Wins, and Losses</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Owner Losses and Wins</h1>
+    <h1>Owner Money, Wins, and Losses</h1>
     <ul class="stats">
       <% for(var i=0; i<stats.length; i++) {%>
         <li class="stats">
-          <p><%= stats[i].budget %></p>
+          <p><%= stats[i].monies %></p>
           <p><%= stats[i].wins %></p>
           <p><%= stats[i].losses %></p>
         </li>
@@ -18,11 +18,11 @@
     </ul>
     <section class="wins"></section>
     <section class="losses"></section>
-    <form action="/owner" class="" action="index.html" method="post">
-      <input type="text" name="" value="">
-      <button type="button" name="button"></button>
+    <form action="/owner" class="" method="post">
+      <input type="text" name="stats" value="">
+      <button type="submit" name="button">Update funds</button>
     </form>
-    <section class="budget"></section>
+    <section class="monies"></section>
     <script src="owner.js" type="text/javascript"></script>
   </body>
 </html>
