@@ -7,7 +7,7 @@ module.exports = function(app, passport, db) {
         res.render('index.ejs'); //add database render if needed be
     });
     //show owner page
-    app.get('/owner', function(req, res) {
+    app.get('/owner', isLoggedIn, function(req, res) {
       db.collection('stats').find().toArray((err, result) => {
     if (err) return console.log(err)
     res.render('owner.ejs', {

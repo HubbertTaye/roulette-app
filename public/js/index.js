@@ -55,4 +55,4 @@ function compareChoices(userChoice, wheelChoice){
   }
 }
 
-document.querySelector('#runUpBitch').addEventListener('click', startGame);
+document.querySelector('#startGame').addEventListener('click', startGame);
