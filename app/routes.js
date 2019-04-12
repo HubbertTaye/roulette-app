@@ -19,6 +19,8 @@ module.exports = function(app, passport, db) {
     // =========================================================================
 // GAME API SET UP =============================================================
 // =============================================================================
+
+//when user wins, house loses money user won. decrease db monies by amount user won
 app.put('/decrease', (req, res) => {
   db.collection('stats').update({}, {
     $inc: {
@@ -28,9 +30,9 @@ app.put('/decrease', (req, res) => {
     if(err) return res.send(err)
     res.send(result)
   })
+})//closes put route for decrease
 
-})
-
+//when user loses, house earns money user lost. increase db monies by amount user lost
 app.put('/increase', (req, res) => {
   db.collection('stats').update({}, {
     $inc: {
@@ -40,17 +42,26 @@ app.put('/increase', (req, res) => {
     if(err) return res.send(err)
     res.send(result)
   })
+}) //closes put route for increase
 
-})
 
-
-//make note of what each route is doing
 
     // =============================================================================
 // OWNER API SET UP ============================================================
 // =============================================================================
 
 //make note of what each route is doing
+
+app.put('/stats', (req, res) => {
+  db.collection('stats').update({}, {
+    $set: {
+      monies: //variable from owner.js
+    }
+  }, (err, result) => {
+    if(err) return res.send(err)
+    res.send(result)
+  })
+}) //closes put route for updating monies
 
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================

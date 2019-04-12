@@ -1,8 +1,8 @@
-// Owner should be able to input value into form to add total funds/bet
-//Owner must also be able to view how much $ profit (losses) and how much $ loss (wins)
-//if the current value does not equal the current value then update into the dom
+//add event listener on update money btn
+//take the value from the input and store in a variable
+//send the variable to routes via fetch put method
+  //send variable via JSON.stringify
 
- 
 Array.from(stats).forEach(function(el) {
       el.addEventListener('click', function(){
         const name = this.parentNode.parentNode.childNodes[1].innerText
